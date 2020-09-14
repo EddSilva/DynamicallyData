@@ -1,0 +1,10 @@
+﻿{
+  "compilerOptions": {
+    "allowJs": true,
+    "outDir": "dist"
+
+  },
+  "files": [
+    "wwwroot/js/index.js"
+  ]
+}
