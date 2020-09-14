@@ -15,10 +15,8 @@ $(function () {
         }
     });
     function getData(tableName, pageNumber) {
-        console.log(tableName, pageNumber);
-        $.get('/GetTable', { tableName: tableName, pageSize: pageSize, pageNumber: pageNumber })
+        $.get('/get-table', { tableName: tableName, pageSize: pageSize, pageNumber: pageNumber })
             .done(function (data) {
-            console.log(data);
             buildTable(data);
             buildPagination(data);
         });
@@ -49,15 +47,21 @@ $(function () {
             var from = 1;
             var to = 3;
             if (!data.hasNext) {
-                from = data.totalPages - 3;
+                from = data.totalPages - 2;
                 to = data.totalPages;
             }
             else if (data.currentPage > 2) {
                 from = data.currentPage - 1;
                 to = data.currentPage + 1;
             }
+            if (from < 1) {
+                from = 1;
+            }
+            if (to > data.totalPages) {
+                to = data.totalPages;
+            }
             for (var i = from; i <= to; i++) {
-                var active = data.currentPage == i ? 'active' : '';
+                var active = data.currentPage == i ? 'active disabled' : '';
                 lis += "<li class=\"page-item " + active + "\" data-page=\"" + i + "\"><a class=\"page-link\" href=\"#\">" + i + "</a></li>";
             }
             lis = "<li class=\"page-item " + (data.hasPrevious ? '' : 'disabled') + "\" data-page=\"1\"><a class=\"page-link\" href=\"#\">First</a></li>" +

@@ -29,7 +29,7 @@ namespace API.DynamicallyData.Controllers
             return View(new ViewModel { Tables = tables.SelectMany(t => t) });
         }
 
-        [HttpGet("GetTable")]
+        [HttpGet("get-table")]
         public async Task<IActionResult> GetAuthors([FromQuery] TablesResourceParameters tableResourceParameters)
         {
             if (string.IsNullOrEmpty(tableResourceParameters?.TableName))
@@ -47,7 +47,7 @@ namespace API.DynamicallyData.Controllers
             return Ok(CollectionResource.Create(rows, currentPage, pageSize, totalCount));
         }
 
-        [HttpGet("Error")]
+        [HttpGet("error")]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

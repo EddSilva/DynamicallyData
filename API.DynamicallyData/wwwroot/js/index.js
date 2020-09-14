@@ -20,7 +20,7 @@
     });
 
     function getData(tableName, pageNumber) {
-        $.get('/GetTable', { tableName: tableName, pageSize: pageSize, pageNumber: pageNumber })
+        $.get('/get-table', { tableName: tableName, pageSize: pageSize, pageNumber: pageNumber })
             .done(function (data) {
                 buildTable(data);
                 buildPagination(data);
