@@ -8,8 +8,8 @@
             <div class="col-6">
                 <div class="form-group row">
                     <label for="formControlSelect" class="col-sm-2 col-form-label">Tables</label>
-                    <div class="col-sm-10">
-                        <select class="form-control" id="formControlSelect">
+                    <div class="col-sm-10 tables-list-container">
+                        <select class="form-control selectpicker" id="formControlSelect">
                             <option data-table-name="none">Select One Table</option>
                             @foreach (var item in Model.Tables)
                             {
